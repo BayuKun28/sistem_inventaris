@@ -45,7 +45,7 @@
                                             if ($b['level'] == 1) {
                                                 echo 'Admin';
                                             } else {
-                                                echo 'Petugas';
+                                                echo 'Peminjam';
                                             }
                                             ?></td>
                                         <td>
@@ -93,7 +93,7 @@
                             <select name="level" id="level" class="form-control">
                                 <option value="">Pilih Level</option>
                                 <option value="1">Admin</option>
-                                <option value="2">Petugas</option>
+                                <option value="2">Peminjam</option>
                             </select>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                             <select name="leveledit" id="leveledit" class="form-control">
                                 <option value="">Pilih Level</option>
                                 <option value="1">Admin</option>
-                                <option value="2">Petugas</option>
+                                <option value="2">Peminjam</option>
                             </select>
                         </div>
                     </div>

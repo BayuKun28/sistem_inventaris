@@ -51,7 +51,7 @@
                                         <td><?= $i; ?></td>
                                         <td><?= $b['nama_barang']; ?></td>
                                         <td><?= $b['nomor_seri_barang']; ?></td>
-                                        <td><?= $b['jumlah']; ?></td>
+                                        <td><?= $b['jumlah']; ?> Buah</td>
                                         <td><?= $b['kondisi']; ?></td>
                                         <td>
                                             <a href="<?= base_url('upload/') . $b['image']; ?>" target="_blank"><?= $b['image']; ?></a>

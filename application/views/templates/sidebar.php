@@ -67,7 +67,7 @@
                                         <li><a href="<?= base_url('Elektronik'); ?>"><i class="fa fa-circle-o"></i> Elektronik</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="<?= base_url('Barangtidaktetap'); ?>"><i class="fa fa-circle-o"></i> Barang Tidak Tetap</a></li>
+                                <!-- <li><a href="<?= base_url('Barangtidaktetap'); ?>"><i class="fa fa-circle-o"></i> Barang Tidak Tetap</a></li> -->
                             </ul>
                         </li>
                         <li class="treeview">
@@ -84,7 +84,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-newspaper-o"></i> <span>Laporan</span>
+                                <i class="fa fa-newspaper-o"></i> <span>History</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
@@ -143,7 +143,7 @@
                                         <li><a href="<?= base_url('Elektronik'); ?>"><i class="fa fa-circle-o"></i> Elektronik</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="<?= base_url('Barangtidaktetap'); ?>"><i class="fa fa-circle-o"></i> Barang Tidak Tetap</a></li>
+                                <!-- <li><a href="<?= base_url('Barangtidaktetap'); ?>"><i class="fa fa-circle-o"></i> Barang Tidak Tetap</a></li> -->
                             </ul>
                         </li>
                         <li class="treeview">
@@ -160,7 +160,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-newspaper-o"></i> <span>Laporan</span>
+                                <i class="fa fa-newspaper-o"></i> <span>History</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>

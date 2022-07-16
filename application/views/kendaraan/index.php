@@ -41,6 +41,7 @@
                                         <th>Action</th>
                                     <?php }
                                     if ($this->session->userdata('level') == 2) { ?>
+                                        <th>Detail</th>
                                     <?php }; ?>
                                 </tr>
                             </thead>
@@ -56,11 +57,15 @@
                                         <td><?= $b['unit_pengguna']; ?></td>
                                         <?php if ($this->session->userdata('level')  == 1) { ?>
                                             <td>
+                                                <a href="<?= base_url('Kendaraan/detail/') . $b['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
                                                 <a href="<?= base_url('Kendaraan/editview/') . $b['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
                                                 <a href='javascript:void(0)' class="del_kendaraan btn btn-sm btn-danger" data-kode="<?= $b['id']; ?>"><i class="fa fa-trash"></i></a>
                                             </td>
                                         <?php }
                                         if ($this->session->userdata('level') == 2) { ?>
+                                            <td>
+                                                <a href="<?= base_url('Kendaraan/detail/') . $b['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                                            </td>
                                         <?php }; ?>
                                     </tr>
                                     <?php $i++; ?>

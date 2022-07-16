@@ -27,12 +27,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="nama_peminjam">Nama Peminjam</label>
+                                        <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?= $user['id']; ?>" required>
                                         <input type="text" class="form-control" id="nama_peminjam" name="nama_peminjam" required>
-                                        </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="nama_barang">No Pol Kendaraan</label>
-                                        <select id="nama_barang" name="nama_barang" class="itemNama_barang form-control" required>
+                                        <select id="nama_barang" name="nama_barang[]" class="itemNama_barang form-control" multiple="multiple" required>
                                         </select>
                                     </div>
                                 </div>

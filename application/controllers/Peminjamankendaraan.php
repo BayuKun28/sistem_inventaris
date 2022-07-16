@@ -22,7 +22,14 @@ class Peminjamankendaraan extends CI_Controller
 
         $data['title'] = 'Peminjaman / Kendaraan';
         $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
-        $data['pinjam'] = $this->peminjamankendaraan_model->read();
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+        $data['pinjam'] = $this->peminjamankendaraan_model->read($filter);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -42,13 +49,17 @@ class Peminjamankendaraan extends CI_Controller
 
     public function tambah()
     {
+
+        $banyakbarang = $this->input->post('nama_barang');
+        $jadisatu = implode(",", $banyakbarang);
         $data = array(
             'nama' => $this->input->post('nama_peminjam'),
             'nama_unit' => $this->input->post('nama_unit'),
-            'nama_barang' => $this->input->post('nama_barang'),
+            'nama_barang' => implode(",",$this->input->post('nama_barang')),
             'tgl_pinjam' => $this->input->post('tgl_pinjam'),
             'keterangan' => $this->input->post('keterangan'),
-            'jenis_pinjam' => 1
+            'jenis_pinjam' => 1,
+            'id_user' => $this->input->post('id_user')
         );
 
         $this->db->insert('peminjaman', $data);
@@ -56,9 +67,12 @@ class Peminjamankendaraan extends CI_Controller
         $data2 = array(
             'status' => 1
         );
-        $idupdate = $this->input->post('nama_barang');
-        $this->db->where('id', $idupdate);
-        $this->db->update('kendaraan', $data2);
+
+        foreach ($banyakbarang as $b) {
+            $idupdate = $b;
+            $this->db->where('id', $idupdate);
+            $this->db->update('kendaraan', $data2);   
+        }
         $this->session->set_flashdata('message', 'Berhasil Ditambah');
         redirect('Peminjamankendaraan');
     }
@@ -69,6 +83,8 @@ class Peminjamankendaraan extends CI_Controller
         $data['title'] = 'Detail Peminjaman';
         $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
         $data['info'] = $this->peminjamankendaraan_model->detail($id);
+        $xbarang = $this->peminjamankendaraan_model->detail2($id)->barangpinjam;
+        $data['infokendaraan'] = $this->peminjamankendaraan_model->detailkendaraan($xbarang);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -85,11 +101,9 @@ class Peminjamankendaraan extends CI_Controller
         $this->db->update('peminjaman', $data);
 
         $idbarang = $this->input->post('idbarang');
-        $data2 = array(
-            'status' => 0
-        );
-        $this->db->where('id', $idbarang);
-        $this->db->update('kendaraan', $data2);
+        
+        $this->peminjamankendaraan_model->kembali($idbarang);
+
         $this->session->set_flashdata('message', 'Berhasil Dikembalikan');
         redirect('Peminjamankendaraan');
     }

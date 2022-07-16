@@ -58,134 +58,136 @@
                                             </div>
                                             <input type="text" class="form-control" value="<?= $info['tgl_kembali']; ?>" disabled>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <?php $i = 1; ?>
+                    <?php foreach ($infokendaraan as $b) : ?>
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Informasi Kendaraan <?= $i; ?></h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label>Nama Unit</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-home"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['nama_unit']; ?>" disabled>
+                                        </div>
+                                        <label>Nama Barang</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-car"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['nama_barang']; ?>" disabled>
+                                        </div>
+                                        <label>Merk</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-cog"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['merk']; ?>" disabled>
+                                        </div>
+                                        <label>Tipe Ranmor</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-cog"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['tipe_ranmor']; ?>" disabled>
+                                        </div>
+                                        <label>Unit Pengguna</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-cog"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['unit_pengguna']; ?>" disabled>
+                                        </div>
+                                        <label>Jenis BBM</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-cog"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['nama_jenis_bbm']; ?>" disabled>
+                                        </div>
+                                        <label>Jenis Ranmor</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-cog"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['nama_jenis_ranmor']; ?>" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label>Nomor Polisi</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-car"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['no_pol']; ?>" disabled>
+                                        </div>
+                                        <label>Nomor Rangka</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-cog"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['no_rangka']; ?>" disabled>
+                                        </div>
+                                        <label>Nomor Mesin</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-cog"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['no_mesin']; ?>" disabled>
+                                        </div>
+                                        <label>Tahun Perolehan</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['tahun_perolehan']; ?>" disabled>
+                                        </div>
+                                        <label>Asal Perolehan</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-building"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['asal_perolehan']; ?>" disabled>
+                                        </div>
+                                        <label>Kondisi</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-cog"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $b['kondisi']; ?>" disabled>
+                                        </div>
                                         <label for="file">File Kendaraan</label>
                                         <div>
-                                            <span><?= $info['file']; ?></span>
+                                            <span><?= $b['file']; ?></span>
                                         </div>
                                         <div>
-                                            <a href="<?= base_url('upload/') . $info['file']; ?>" target="_blank" class="btn btn-sm btn-warning">Buka</a>
+                                            <a href="<?= base_url('upload/') . $b['file']; ?>" target="_blank" class="btn btn-sm btn-warning">Buka</a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                </div>
-                <div class="box-header with-border">
-                    <h3 class="box-title">Informasi Kendaraan</h3>
-                </div>
-                <form action="">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label>Nama Unit</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-home"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['nama_unit']; ?>" disabled>
-                                    </div>
-                                    <label>Nama Barang</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-car"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['nama_barang']; ?>" disabled>
-                                    </div>
-                                    <label>Merk</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['merk']; ?>" disabled>
-                                    </div>
-                                    <label>Tipe Ranmor</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['tipe_ranmor']; ?>" disabled>
-                                    </div>
-                                    <label>Unit Pengguna</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['unit_pengguna']; ?>" disabled>
-                                    </div>
-                                    <label>Jenis BBM</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['nama_jenis_bbm']; ?>" disabled>
-                                    </div>
-                                    <label>Jenis Ranmor</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['nama_jenis_ranmor']; ?>" disabled>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label>Nomor Polisi</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-car"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['no_pol']; ?>" disabled>
-                                    </div>
-                                    <label>Nomor Rangka</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['no_rangka']; ?>" disabled>
-                                    </div>
-                                    <label>Nomor Mesin</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['no_mesin']; ?>" disabled>
-                                    </div>
-                                    <label>Tahun Perolehan</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['tahun_perolehan']; ?>" disabled>
-                                    </div>
-                                    <label>Asal Perolehan</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-building"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['asal_perolehan']; ?>" disabled>
-                                    </div>
-                                    <label>Kondisi</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['kondisi']; ?>" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-footer text-right">
-                                <a href="<?= base_url('Peminjamankendaraan'); ?>" class="btn btn-danger">Kembali</a>
-                            </div>
-                        </div>
-
-                </form>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                    <div class="box-footer text-right">
+                        <a href="<?= base_url('Peminjamankendaraan'); ?>" class="btn btn-danger">Kembali</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 
-<?php $this->load->view('templates/footer'); ?>
+    <?php $this->load->view('templates/footer'); ?>

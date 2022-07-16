@@ -13,6 +13,16 @@ class Elektronik_model extends CI_Model
         echo json_encode($query);
     }
 
+    public function getall()
+    {
+        $query = "SELECT e.id,e.nama_barang,e.nomor_seri_barang,e.jumlah,e.kondisi as idkondisi,k.kondisi,e.image
+        FROM elektronik e
+        LEFT JOIN kondisi k on k.id = e.kondisi
+        WHERE e.jumlah <> 0
+        ORDER BY e.id DESC";
+        return $this->db->query($query)->result();
+    }
+
     public function edit($id)
     {
         $query = "SELECT e.id,e.nama_barang,e.nomor_seri_barang,e.jumlah,e.kondisi as idkondisi,k.kondisi,e.image

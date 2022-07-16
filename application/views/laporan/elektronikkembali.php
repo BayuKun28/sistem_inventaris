@@ -58,7 +58,7 @@
                                     <th>Tanggal Pinjam</th>
                                     <th>Keterangan</th>
                                     <th>Status</th>
-                                    <th>Cetak</th>
+                                    <!-- <th>Cetak</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,7 +78,7 @@
                                                 echo " <a class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Dipinjam</a>";
                                             }
                                             ?></td>
-                                        <td><a target="_blank" href="<?= base_url('Laporan/cetaktransaksielektronik/') . $b['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-book"></i></a></td>
+                                        <!-- <td><a target="_blank" href="<?= base_url('Laporan/cetaktransaksielektronik/') . $b['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-book"></i></a></td> -->
                                     </tr>
                                     <?php $i++; ?>
                                 <?php endforeach; ?>

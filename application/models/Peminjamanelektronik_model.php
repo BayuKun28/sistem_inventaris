@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Peminjamanelektronik_model extends CI_Model
 {
-    public function read()
+    public function read($filter)
     {
         $query = "SELECT p.id,p.nama,
                         p.jenis_pinjam,
@@ -24,7 +24,7 @@ class Peminjamanelektronik_model extends CI_Model
                         p.keterangan
                 FROM peminjaman p
                     LEFT JOIN jenis j on j.id = p.jenis_pinjam
-                WHERE p.jenis_pinjam = 2
+                WHERE p.jenis_pinjam = 2 $filter
                 ORDER BY p.id DESC";
         return $this->db->query($query)->result_array();
         echo json_encode($query);
@@ -58,10 +58,51 @@ class Peminjamanelektronik_model extends CI_Model
         return $this->db->query($query)->row_array();
         echo json_encode($query);
     }
+
+    public function detail_elektronik($id)
+    {
+        $query = "SELECT e.nama_barang,e.nomor_seri_barang, k.kondisi ,d.qty,e.image
+                    FROM detail_transaksi_elektronik d 
+                    LEFT JOIN elektronik e on e.id = d.barang
+                    LEFT JOIN kondisi k on k.id = e.kondisi
+                    WHERE d.peminjaman_id = '$id'
+                    ORDER BY e.id ASC";
+        return $this->db->query($query)->result_array();
+        echo json_encode($query);
+    }
+
     public function getStok($id)
     {
         $this->db->select('jumlah');
         $this->db->where('id', $id);
         return $this->db->get('elektronik')->row();
+    }
+
+    public function tambah_pinjam($data)
+    {
+        $this->db->insert('peminjaman', $data);
+        $id = $this->db->insert_id();
+        return (isset($id)) ? $id : FALSE;
+    }
+
+    public function addStok($id, $jumlah)
+    {
+        $this->db->where('id', $id);
+        $this->db->set('jumlah', $jumlah);
+        return $this->db->update('elektronik');
+    }
+    public function tambah_detail_order($data)
+    {
+        $this->db->insert('detail_transaksi_elektronik', $data);
+    }
+    public function kembali($id)
+    {
+        $query = "
+                UPDATE elektronik e 
+                JOIN (SELECT d.barang,d.qty FROM detail_transaksi_elektronik d  WHERE d.peminjaman_id = '$id' ORDER BY d.barang ASC ) z on z.barang = e.id
+                SET
+                e.jumlah = e.jumlah + z.qty
+        ";
+        return $this->db->query($query);
     }
 }

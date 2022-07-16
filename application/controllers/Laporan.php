@@ -39,9 +39,17 @@ class Laporan extends CI_Controller
             $xtanggalakhir = date('Y/m/d', strtotime('+1 days'));
         }
 
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+
         $data['tanggalawal'] = $xtanggalawal;
         $data['tanggalakhir'] = $xtanggalakhir;
-        $data['pinjam'] = $this->laporan_model->readkendaraanpinjam($xtanggalawal, $xtanggalakhir);
+        $data['pinjam'] = $this->laporan_model->readkendaraanpinjam($xtanggalawal, $xtanggalakhir, $filter);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -67,7 +75,17 @@ class Laporan extends CI_Controller
 
         $data['tanggalawal'] = date('d F Y', strtotime($xtanggalawal));
         $data['tanggalakhir'] = date('d F Y', strtotime($xtanggalakhir));
-        $data['pinjam'] = $this->laporan_model->readkendaraanpinjam($xtanggalawal, $xtanggalakhir);
+
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+
+        $data['pinjam'] = $this->laporan_model->readkendaraanpinjam($xtanggalawal, $xtanggalakhir,$filter);
+        $data['hariini'] = date('d F Y');
 
         $dompdf = new Dompdf();
         $dompdf->setPaper('A4', 'Portrait');
@@ -93,9 +111,17 @@ class Laporan extends CI_Controller
             $xtanggalakhir = date('Y/m/d', strtotime('+1 days'));
         }
 
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+
         $data['tanggalawal'] = $xtanggalawal;
         $data['tanggalakhir'] = $xtanggalakhir;
-        $data['kembali'] = $this->laporan_model->readkendaraankembali($xtanggalawal, $xtanggalakhir);
+        $data['kembali'] = $this->laporan_model->readkendaraankembali($xtanggalawal, $xtanggalakhir,$filter);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -110,7 +136,18 @@ class Laporan extends CI_Controller
 
         $data['tanggalawal'] = date('d F Y', strtotime($xtanggalawal));
         $data['tanggalakhir'] = date('d F Y', strtotime($xtanggalakhir));
-        $data['kembali'] = $this->laporan_model->readkendaraankembali($xtanggalawal, $xtanggalakhir);
+
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+
+
+        $data['kembali'] = $this->laporan_model->readkendaraankembali($xtanggalawal, $xtanggalakhir,$filter);
+        $data['hariini'] = date('d F Y');
 
         $dompdf = new Dompdf();
         $dompdf->setPaper('A4', 'Portrait');
@@ -136,9 +173,19 @@ class Laporan extends CI_Controller
             $xtanggalakhir = date('Y/m/d', strtotime('+1 days'));
         }
 
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+
+        $data['hariini'] = date('d F Y');
+
         $data['tanggalawal'] = $xtanggalawal;
         $data['tanggalakhir'] = $xtanggalakhir;
-        $data['pinjam'] = $this->laporan_model->readelektronikpinjam($xtanggalawal, $xtanggalakhir);
+        $data['pinjam'] = $this->laporan_model->readelektronikpinjam($xtanggalawal, $xtanggalakhir,$filter);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -154,7 +201,18 @@ class Laporan extends CI_Controller
 
         $data['tanggalawal'] = date('d F Y', strtotime($xtanggalawal));
         $data['tanggalakhir'] = date('d F Y', strtotime($xtanggalakhir));
-        $data['pinjam'] = $this->laporan_model->readelektronikpinjam($xtanggalawal, $xtanggalakhir);
+
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+
+        $data['hariini'] = date('d F Y');
+
+        $data['pinjam'] = $this->laporan_model->readelektronikpinjam($xtanggalawal, $xtanggalakhir,$filter);
 
         $dompdf = new Dompdf();
         $dompdf->setPaper('A4', 'Portrait');
@@ -190,9 +248,18 @@ class Laporan extends CI_Controller
             $xtanggalakhir = date('Y/m/d', strtotime('+1 days'));
         }
 
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+        $data['hariini'] = date('d F Y');
+
         $data['tanggalawal'] = $xtanggalawal;
         $data['tanggalakhir'] = $xtanggalakhir;
-        $data['kembali'] = $this->laporan_model->readelektronikkembali($xtanggalawal, $xtanggalakhir);
+        $data['kembali'] = $this->laporan_model->readelektronikkembali($xtanggalawal, $xtanggalakhir,$filter);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -207,7 +274,17 @@ class Laporan extends CI_Controller
 
         $data['tanggalawal'] = date('d F Y', strtotime($xtanggalawal));
         $data['tanggalakhir'] = date('d F Y', strtotime($xtanggalakhir));
-        $data['kembali'] = $this->laporan_model->readelektronikkembali($xtanggalawal, $xtanggalakhir);
+
+        $user = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+
+        if ($user['level'] == 1) {
+            $filter = '';
+        }else{
+            $filter = ' AND p.id_user = '. $user['id'] . '';
+        }
+
+        $data['hariini'] = date('d F Y');
+        $data['kembali'] = $this->laporan_model->readelektronikkembali($xtanggalawal, $xtanggalakhir,$filter);
 
         $dompdf = new Dompdf();
         $dompdf->setPaper('A4', 'Portrait');

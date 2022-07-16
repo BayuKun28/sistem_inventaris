@@ -33,8 +33,8 @@
                                     <th>Nama Barang</th>
                                     <th>Tanggal Pinjam</th>
                                     <th>Keterangan</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Informasi</th>
+                                    <th>Detail</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,14 +47,28 @@
                                         <td><?= $b['nama_barang']; ?></td>
                                         <td><?= $b['tgl_pinjam']; ?></td>
                                         <td><?= $b['keterangan']; ?></td>
-                                        <td><?php
-                                            if (!empty($b['tgl_kembali'])) {
-                                                echo " <a class='btn btn-sm btn-success'><i class='fa fa-check-circle'></i> Dikembalikan</a>";
-                                            } else {
-                                                echo " <a id='kembali' class='btn btn-sm btn-danger' data-toggle='modal' data-target='#modal-kembali' data-idkembali='" . $b['id'] . "' data-idbarang='" . $b['idbarang'] . "' ><i class='fa fa-close'></i> Dipinjam</a>";
-                                            }
-                                            ?></td>
-                                        <td><a href="<?= base_url('Peminjamankendaraan/detail/') . $b['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-book"></i></a></td>
+                                        <?php if ($this->session->userdata('level')  == 1) { ?>
+                                            <td>
+                                                <?php
+                                                    if (!empty($b['tgl_kembali'])) {
+                                                    echo " <a class='btn btn-sm btn-success'><i class='fa fa-check-circle'></i> Dikembalikan</a>";
+                                                    } else {
+                                                    echo " <a id='kembali' class='btn btn-sm btn-danger' data-toggle='modal' data-target='#modal-kembali' data-idkembali='" . $b['id'] . "' data-idbarang='" . $b['idbarang'] . "' ><i class='fa fa-close'></i> Dipinjam</a>";
+                                                    } 
+                                                ?>
+                                            </td>
+                                        <?php } if ($this->session->userdata('level') == 2) { ?>
+                                            <td>
+                                                <?php
+                                                    if (!empty($b['tgl_kembali'])) {
+                                                    echo " <a class='btn btn-sm btn-success'><i class='fa fa-check-circle'></i> Dikembalikan</a>";
+                                                    } else {
+                                                    echo " <a class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Dipinjam</a>";
+                                                    }
+                                                    ?>
+                                            </td>
+                                        <?php }; ?>
+                                        <td><a href="<?= base_url('Peminjamankendaraan/detail/') . $b['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a></td>
                                     </tr>
                                     <?php $i++; ?>
                                 <?php endforeach; ?>

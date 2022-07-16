@@ -3,10 +3,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Laporan Peminjaman Kendaraan
+            Laporan Pengembalian Kendaraan
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Laporan Peminjaman</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Laporan Pengembalian</a></li>
             <li class="active">Kendaraan</li>
         </ol>
     </section>
@@ -58,7 +58,7 @@
                                     <th>Tanggal Pinjam</th>
                                     <th>Keterangan</th>
                                     <th>Status</th>
-                                    <th>Cetak</th>
+                                    <!-- <th>Cetak</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,7 +78,7 @@
                                                 echo " <a class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Dipinjam</a>";
                                             }
                                             ?></td>
-                                        <td><a target="_blank" href="<?= base_url('Laporan/cetaktransaksikendaraan/') . $b['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-book"></i></a></td>
+                                        <!-- <td><a target="_blank" href="<?= base_url('Laporan/cetaktransaksikendaraan/') . $b['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-book"></i></a></td> -->
                                     </tr>
                                     <?php $i++; ?>
                                 <?php endforeach; ?>

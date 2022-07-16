@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 17, 2022 at 04:07 PM
+-- Generation Time: Jul 16, 2022 at 05:08 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -48,6 +48,40 @@ INSERT INTO `barang_tidak_tetap` (`id`, `nama_barang`, `jumlah`, `keterangan`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detail_transaksi_elektronik`
+--
+
+DROP TABLE IF EXISTS `detail_transaksi_elektronik`;
+CREATE TABLE IF NOT EXISTS `detail_transaksi_elektronik` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `peminjaman_id` int(11) NOT NULL,
+  `barang` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_transaksi_elektronik`
+--
+
+INSERT INTO `detail_transaksi_elektronik` (`id`, `peminjaman_id`, `barang`, `qty`) VALUES
+(1, 36, 4, 1),
+(2, 36, 3, 1),
+(3, 36, 2, 1),
+(4, 37, 4, 4),
+(5, 41, 4, 1),
+(6, 41, 3, 1),
+(7, 41, 2, 1),
+(8, 42, 4, 1),
+(9, 42, 3, 1),
+(10, 42, 2, 1),
+(11, 43, 3, 1),
+(12, 1, 4, 1),
+(13, 1, 3, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `elektronik`
 --
 
@@ -68,9 +102,9 @@ CREATE TABLE IF NOT EXISTS `elektronik` (
 --
 
 INSERT INTO `elektronik` (`id`, `nama_barang`, `nomor_seri_barang`, `jumlah`, `kondisi`, `image`, `status`) VALUES
-(2, 'LAPTOP ACER ASPIRE ONE ', 'LPT001PK', 11, 1, 'output-onlinejpgtools2.jpg', 0),
-(3, 'LAMPU', '12368712HH', 21, 1, 'output-onlinejpgtools3.jpg', 0),
-(4, 'PRINTER EPSON A900', 'AVSU898', 4, 1, 'pemadaman.jpg', 0);
+(2, 'LAPTOP ACER ASPIRE ONE ', 'LPT001PK', 10, 1, 'output-onlinejpgtools2.jpg', 0),
+(3, 'LAMPU', '12368712HH', 19, 1, 'output-onlinejpgtools3.jpg', 0),
+(4, 'PRINTER EPSON A900', 'AVSU898', 2, 1, 'pemadaman.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -160,19 +194,20 @@ CREATE TABLE IF NOT EXISTS `kendaraan` (
   `file` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kendaraan`
 --
 
 INSERT INTO `kendaraan` (`id`, `jenis_ranmor`, `merk`, `tipe_ranmor`, `unit_pengguna`, `no_pol`, `no_rangka`, `no_mesin`, `tahun_perolehan`, `asal_perolehan`, `kondisi_ranmor`, `jenis_bbm`, `file`, `status`) VALUES
-(1, 1, 'HONDA', 'MOTOR', 1, 'AD 0000 BB', '123123HHJ1239217UHH', '31293HGJHJH123', 2022, 'POLDA JATENGG', 1, 2, '_21_minimalist-iron-man-wallpaper_Iron-Man-4k-Ultra-HD-Wallpaper-Background-Image-1.jpg', 0),
+(1, 1, 'HONDA', 'MOTOR', 1, 'AD 0000 BB', '123123HHJ1239217UHH', '31293HGJHJH123', 2022, 'POLDA JATENGG', 1, 2, '_21_minimalist-iron-man-wallpaper_Iron-Man-4k-Ultra-HD-Wallpaper-Background-Image-1.jpg', 1),
 (2, 1, 'SUZUKI', 'MOBIL', 1, 'AD 0000 CC', '130912809JBJH', '3812039JBDJSJ', 2021, 'POLDA DIY', 1, 2, '01__pt_gin_Surat_kesanggupan_tutor_Bayu_Prastyo_10-01-2022.pdf', 1),
 (3, 1, 'Kawasaki', 'MOTOR', 1, 'AB 0000 BB', '123123HHJ1239217ULL', '31293HGJHJ131', 2022, 'POLDA JATENG', 1, 1, '01__pt_gin_Surat_kesanggupan_tutor_Bayu_Prastyo_10-01-2022.pdf', 0),
-(5, 1, 'COBA MERK', 'COBA TIPE', 1, 'B 0001 XY', '123123HHJ1239217UHHDAJBJS123', '3812039JBDJSJASAHAS', 2022, 'POLDA JATENG', 1, 2, '_21_minimalist-iron-man-wallpaper_Iron-Man-4k-Ultra-HD-Wallpaper-Background-Image-.jpg', 1),
+(5, 1, 'COBA MERK', 'COBA TIPE', 1, 'B 0001 XY', '123123HHJ1239217UHHDAJBJS123', '3812039JBDJSJASAHAS', 2022, 'POLDA JATENG', 1, 2, '_21_minimalist-iron-man-wallpaper_Iron-Man-4k-Ultra-HD-Wallpaper-Background-Image-.jpg', 0),
 (6, 3, 'HONDA', 'JAZZ', 1, 'AB 0001 XZ', '138129038SIHFSI23', '21312312ASDAIH', 2021, 'POLDA JATENG', 1, 4, 'output-onlinejpgtools.jpg', 0),
-(8, 3, 'SUZUKI', 'GSX 150 RR', 1, 'AB 9898 OP', '3456789EDTY9876RDTY', '3245678OIUYT34567IHJG', 2022, 'POLDA JOGJA', 1, 2, 'SeekPng_com_user-png_7297561.png', 0);
+(8, 3, 'SUZUKI', 'GSX 150 RR', 1, 'AB 9898 OP', '3456789EDTY9876RDTY', '3245678OIUYT34567IHJG', 2022, 'POLDA JOGJA', 1, 2, 'SeekPng_com_user-png_7297561.png', 0),
+(10, 1, 'asd', 'asd', 1, 'asd', 'asd', 'asd', 2022, 'sad', 1, 1, 'Remini20220712065327838.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -185,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `kondisi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kondisi` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kondisi`
@@ -214,8 +249,8 @@ CREATE TABLE IF NOT EXISTS `level_pengguna` (
 --
 
 INSERT INTO `level_pengguna` (`id`, `nama_level`) VALUES
-(1, 'admin'),
-(2, 'operator');
+(1, 'Admin'),
+(2, 'Peminjam');
 
 -- --------------------------------------------------------
 
@@ -229,41 +264,21 @@ CREATE TABLE IF NOT EXISTS `peminjaman` (
   `nama` varchar(255) NOT NULL,
   `jenis_pinjam` int(11) NOT NULL,
   `nama_unit` varchar(255) NOT NULL,
-  `nama_barang` int(11) NOT NULL,
+  `nama_barang` text NOT NULL,
   `tgl_pinjam` date NOT NULL,
   `tgl_kembali` date DEFAULT NULL,
   `keterangan` varchar(255) NOT NULL,
+  `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `peminjaman`
 --
 
-INSERT INTO `peminjaman` (`id`, `nama`, `jenis_pinjam`, `nama_unit`, `nama_barang`, `tgl_pinjam`, `tgl_kembali`, `keterangan`) VALUES
-(1, 'Bayu Prastyo', 1, 'UNIT TEST', 1, '2022-04-26', '2022-04-30', 'Pinjam Untuk Kepentingan Bla Bla'),
-(2, 'Esti Setyaningrum', 1, 'UNIT TEST', 2, '2022-05-07', '2022-05-31', 'Peminjaman Kendaraan '),
-(3, 'Tes Nama', 1, 'UNIT TEST', 3, '2022-05-07', '2022-05-28', 'Tes Keterangan'),
-(4, 'Nurdin Ardhi', 1, 'UNIT TEST', 2, '2022-05-09', '2022-05-09', 'Anu'),
-(5, 'BonaVentura', 1, 'UNIT TEST', 2, '2022-05-09', '2022-05-10', 'A'),
-(6, 'Ilyas NF', 1, 'UNIT TEST', 5, '2022-05-11', '2022-05-13', 'Pinjam Satria F'),
-(7, 'Esti Setyaningrum', 2, 'UNIT TEST', 2, '2022-05-11', '2022-05-12', 'Pinjam Laptop'),
-(8, 'Bayu Prastyo', 2, 'UNIT TEST', 2, '2022-05-13', '2022-05-13', 'Pinjam Laptop Coba'),
-(9, 'Miftah', 2, 'UNIT TEST', 3, '2022-05-13', '2022-05-13', 'ABC'),
-(10, 'Faisal', 1, 'UNIT TEST', 2, '2022-05-13', NULL, 'Keterangan'),
-(11, 'ISNAN', 1, 'UNIT TEST', 6, '2022-05-13', '2022-05-17', 'ISNAN'),
-(12, 'NamedBay', 1, 'UNIT TEST', 3, '2022-05-13', '2022-05-13', 'A'),
-(13, 'Isnan', 2, 'UNIT TEST', 3, '2022-05-13', '2022-05-13', 'A'),
-(14, 'Test Last', 1, 'UNIT TEST', 5, '2022-05-16', '2022-05-16', 'Keterangan Test'),
-(15, 'Test Last', 2, 'UNIT TEST', 3, '2022-05-16', '2022-05-16', 'Test'),
-(16, 'Tes Pinjam', 2, 'UNIT TEST', 2, '2022-05-16', '2022-05-17', 'A'),
-(17, 'Coba Lagi', 1, 'UNIT TEST', 5, '2022-05-16', '2022-05-16', '123'),
-(18, 'tes', 1, 'UNIT TEST', 1, '2022-05-16', '2022-05-16', 'tes'),
-(19, 'Tes Chart', 1, 'UNIT TEST', 5, '2022-11-17', '2022-05-17', 'ABC'),
-(20, 'TEST UPDATE BARANG DAN UNIT', 1, 'UNIT UPDATE', 5, '2022-05-17', NULL, 'TEST UPDATE BARANG DAN UNIT'),
-(21, 'TEST UPDATE NAMA UNIT BARANG', 2, 'UNIT TEST UPDATE', 4, '2022-05-17', '2022-05-17', 'KETERANGAN TEST UPDATE'),
-(22, 'sS12)*%$#;\'', 1, 'asASS', 8, '2022-05-17', '2022-05-17', 'SAS9891`82`92981`2\'\'`12\'`12'),
-(23, 'asAS982^*(@!@*@#(@#*@#(((@#*)!@)(!@@#)~~~~````2021012', 2, 'asASasdssaasdasd', 3, '0000-00-00', '0000-00-00', 'ASKJaksjkASi');
+INSERT INTO `peminjaman` (`id`, `nama`, `jenis_pinjam`, `nama_unit`, `nama_barang`, `tgl_pinjam`, `tgl_kembali`, `keterangan`, `id_user`) VALUES
+(1, 'TES 1', 2, 'TES 1', 'In Detail', '2022-07-16', NULL, '123', 1),
+(2, 'tes', 1, 'tes', '1,2', '2022-07-16', NULL, '123', 1);
 
 -- --------------------------------------------------------
 
@@ -280,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
   `level` int(11) NOT NULL,
   `is_active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengguna`
@@ -288,7 +303,8 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
 
 INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `level`, `is_active`) VALUES
 (1, 'admin', '$2y$10$/I7laWi1mlNFxYSv54EUPOH8MuZhmRWxhE.LaddTK9TSmVe.IHP2C', 'Admin', 1, 1),
-(2, 'petugas', '$2y$10$pwQLe1vob0n8lw8A6/t29Ok.RHxQZ.cBj2E2/GEy8IxDDQKxgR/nq', 'Petugas', 2, 1);
+(2, 'peminjam1', '$2y$10$sHy4mAQIwZAkly2iDeuFxuHT06pLeVf6ddfZIawN7C09OcNu63dw.', 'Peminjam1', 2, 1),
+(3, 'peminjam2', '$2y$10$UqRs8NE0/xsXpwYWQIF0Q.HgCK9HfE/3.hI4JW0RHOvu8sSYBRXWO', 'Peminjam2', 2, 1);
 
 -- --------------------------------------------------------
 

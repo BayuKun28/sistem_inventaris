@@ -18,7 +18,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Informasi Peminjam</h3>
+                        <h3 class="box-title"><b>Informasi Peminjam</b></h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -58,64 +58,69 @@
                                             </div>
                                             <input type="text" class="form-control" value="<?= $info['tgl_kembali']; ?>" disabled>
                                         </div>
-                                        <label for="file">File Elektronik</label>
-                                        <div>
-                                            <span><?= $info['image']; ?></span>
-                                        </div>
-                                        <div>
-                                            <a href="<?= base_url('upload/') . $info['image']; ?>" target="_blank" class="btn btn-sm btn-warning">Buka</a>
+                                        <label>Nama Unit</label>
+                                        <div class=" input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                            <input type="text" class="form-control" value="<?= $info['nama_unit']; ?>" disabled>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    </form>
-                </div>
-                <div class="box-header with-border">
-                    <h3 class="box-title">Informasi Elektronik</h3>
-                </div>
-                <form action="">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label>Nama Unit</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-home"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['nama_unit']; ?>" disabled>
-                                    </div>
-                                    <label>Nama Barang</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-laptop"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['nama_barang']; ?>" disabled>
-                                    </div>
-                                    <label>Nomor Seri Barang</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['nomor_seri_barang']; ?>" disabled>
-                                    </div>
-                                    <label>Kondisi</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-cog"></i>
-                                        </div>
-                                        <input type="text" class="form-control" value="<?= $info['kondisi']; ?>" disabled>
-                                    </div>
-                                </div>
+                        </form>
+                    </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><b>Informasi Elektronik Yang Dipinjam</b></h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row col-md-12">
+                            <div class="table-responsive">
+                                <table id="tabledata" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Barang</th>
+                                            <th>Nomor Seri Barang</th>
+                                            <th>Kondisi</th>
+                                            <th>Qty</th>
+                                            <th>Gambar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($detail as $b) : ?>
+                                            <tr>
+                                                <td><?= $i; ?></td>
+                                                <td><?= $b['nama_barang']; ?></td>
+                                                <td><?= $b['nomor_seri_barang']; ?></td>
+                                                <td><?= $b['kondisi']; ?></td>
+                                                <td><?= $b['qty']; ?></td>
+                                                <td>
+                                                    <a href="<?= base_url('upload/') . $b['image']; ?>" class="btn btn-warning" target="_blank">Buka</a>
+                                                </td>
+                                            </tr>
+                                            <?php $i++; ?>
+                                        <?php endforeach; ?>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                </form>
+                    </div>
+                </div>
+                <div class="box-footer text-right">
+                    <a href="<?= base_url('Peminjamanelektronik'); ?>" class="btn btn-danger">Kembali</a>
+                </div>
             </div>
-            <div class="box-footer text-right">
-                <a href="<?= base_url('Peminjamanelektronik'); ?>" class="btn btn-danger">Kembali</a>
-            </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 
-<?php $this->load->view('templates/footer'); ?>
+    <?php $this->load->view('templates/footer'); ?>
+    <script>
+        $(document).ready(function() {
+            $('#tabledata').DataTable({
+                responsive: true
+            });
+        });
+    </script>

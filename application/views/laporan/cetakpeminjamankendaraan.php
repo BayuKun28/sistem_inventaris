@@ -11,7 +11,7 @@
         <center>
             <h3>Laporan Data Peminjaman Kendaraan </h3>
             <h4> <?= $tanggalawal; ?> s/d <?= $tanggalakhir; ?></h4>
-            <table border="1" width="100%">
+            <table border="1" width="100%" style="border-collapse:collapse;">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -37,6 +37,11 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <div style="width: 35%; text-align: center; float: right;">Surakarta, <?= $hariini; ?> <br>
+                        KANIT GAKKUM, <br> <br> <br> <br>
+                        <u>SUHARTO, SH</u> <br>
+                        IPTU NRP 69060262
+                    </div><br><br><br><br><br><br>
         </center>
     </div>
 </body>
