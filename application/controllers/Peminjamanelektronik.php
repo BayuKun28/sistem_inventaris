@@ -176,6 +176,37 @@ public function detail()
     $this->load->view('peminjamanelektronik/detail', $data);
 }
 
+public function edit()
+{
+    $id = $this->uri->segment(3);
+    $data['title'] = 'Edit Peminjaman';
+    $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+    $data['info'] = $this->peminjamanelektronik_model->detail($id);
+    $data['detail'] = $this->peminjamanelektronik_model->detail_elektronik($id);
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('peminjamanelektronik/edit', $data);
+}
+
+public function simpanedit()
+    {
+
+        $id = $this->input->post('id_peminjaman');
+        $data = array(
+            'nama' => $this->input->post('nama_peminjam'),
+            'tgl_pinjam' => $this->input->post('tgl_pinjam'),
+            'keterangan' => $this->input->post('keterangan'),
+            'nama_unit' => $this->input->post('nama_unit')
+        );
+
+        $this->db->where('id', $id);
+        $this->db->update('peminjaman', $data);
+
+        $this->session->set_flashdata('message', 'Berhasil Di Update');
+        redirect('peminjamanelektronik');
+    }
+
 public function kembali()
 {
     $id = $this->input->post('idkembali');

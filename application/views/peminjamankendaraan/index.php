@@ -68,7 +68,10 @@
                                                     ?>
                                             </td>
                                         <?php }; ?>
-                                        <td><a href="<?= base_url('Peminjamankendaraan/detail/') . $b['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a></td>
+                                        <td>
+                                            <a href="<?= base_url('Peminjamankendaraan/detail/') . $b['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                                            <a href="<?= base_url('Peminjamankendaraan/edit/') . $b['id']; ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                        </td>
                                     </tr>
                                     <?php $i++; ?>
                                 <?php endforeach; ?>

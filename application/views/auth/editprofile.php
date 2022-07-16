@@ -50,11 +50,11 @@
                                                                                                 if ($pengguna['level'] == 1) {
                                                                                                     echo "Admin";
                                                                                                 } else if ($pengguna['level'] == 2) {
-                                                                                                    echo "Petugas";
+                                                                                                    echo "Peminjam";
                                                                                                 }
                                                                                                 ?></option>
                                             <option value="1">Admin</option>
-                                            <option value="2">Petugas</option>
+                                            <option value="2">Peminjam</option>
                                         </select>
                                     </div>
                                 </div>
