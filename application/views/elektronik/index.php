@@ -13,11 +13,18 @@
     <!-- Main content -->
     <section class="content">
         <div class="box">
-            <div class="row col-md-12">
+            <div class="row col-md-12 text-right">
                 <div class="form-row">
-                    <div class="box-header col-md-6">
+                    <div class="box-header col-md-12">
                         <?php if ($this->session->userdata('level')  == 1) { ?>
                             <h3 class="box-title"><a href="<?= base_url('Elektronik/FormInput'); ?>" class="btn btn-block btn-success">Tambah</a></h3>
+                        <?php }
+                        if ($this->session->userdata('level') == 2) { ?>
+                        <?php }; ?>
+                        <?php if ($this->session->userdata('level')  == 1) { ?>
+                            <h3 class="box-title">
+                                <a href="<?= base_url('Elektronik/cetak'); ?>" name="cetak" class="btn btn-danger btn-col-1" target="_blank" role="button" aria-disabled="true"><i class="fa fa-balance-scale fa-fw"></i>Cetak</a>
+                            </h3>
                         <?php }
                         if ($this->session->userdata('level') == 2) { ?>
                         <?php }; ?>

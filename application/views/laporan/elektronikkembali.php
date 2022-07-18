@@ -38,7 +38,11 @@
                             </div>
                             <div class="form-group col-md-4 align-items-end">
                                 <button name="action" value="tampil" type="submit" class="btn btn-success btn-col-1 " role="button" aria-disabled="true">Tampilkan</button>
-                                <a href="<?= base_url('Laporan/cetakpengembalianelektronik?tglawal=') . $tanggalawal . '&tglakhir=' . $tanggalakhir; ?>" name="cetak" class="btn btn-danger btn-col-1" target="_blank" role="button" aria-disabled="true"><i class="fa fa-balance-scale fa-fw"></i>Cetak</a>
+                                <?php if ($this->session->userdata('level')  == 1) { ?>
+                                    <a href="<?= base_url('Laporan/cetakpengembalianelektronik?tglawal=') . $tanggalawal . '&tglakhir=' . $tanggalakhir; ?>" name="cetak" class="btn btn-danger btn-col-1" target="_blank" role="button" aria-disabled="true"><i class="fa fa-balance-scale fa-fw"></i>Cetak</a>
+                                <?php }
+                                if ($this->session->userdata('level') == 2) { ?>
+                                <?php }; ?>
                             </div>
                         </form>
                     </div>

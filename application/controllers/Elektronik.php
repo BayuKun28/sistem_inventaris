@@ -1,5 +1,9 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+// defined('BASEPATH') or exit('No direct script access allowed');
+require_once 'vendor/autoload.php';
+
+use Dompdf\Dompdf as Dompdf;
+
 
 class Elektronik extends CI_Controller
 {
@@ -156,5 +160,19 @@ class Elektronik extends CI_Controller
         $jen = $this->input->get('jen');
         $query = $this->jenis_bbm_model->getjenis2($jen, 'nama_jenis_bbm');
         echo json_encode($query);
+    }
+    public function cetak()
+    {
+        $data['title'] = 'Laporan Elektronik';
+        $data['user'] = $this->db->get_where('pengguna', ['username' => $this->session->userdata('username')])->row_array();
+        $data['hariini'] = date('d F Y');
+        $data['elektronik'] = $this->elektronik_model->read();
+
+        $dompdf = new Dompdf();
+        $dompdf->setPaper('A4', 'Portrait');
+        $html = $this->load->view('elektronik/cetak', $data, true);
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->stream('Laporan Elektronik ', array("Attachment" => false));
     }
 }

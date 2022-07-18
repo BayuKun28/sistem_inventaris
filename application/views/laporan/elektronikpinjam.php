@@ -38,7 +38,11 @@
                             </div>
                             <div class="form-group col-md-4 align-items-end">
                                 <button name="action" value="tampil" type="submit" class="btn btn-success btn-col-1 " role="button" aria-disabled="true">Tampilkan</button>
-                                <a href="<?= base_url('Laporan/cetakpeminjamanelektronik?tglawal=') . $tanggalawal . '&tglakhir=' . $tanggalakhir; ?>" name="cetak" class="btn btn-danger btn-col-1" target="_blank" role="button" aria-disabled="true"><i class="fa fa-balance-scale fa-fw"></i>Cetak</a>
+                                <?php if ($this->session->userdata('level')  == 1) { ?>
+                                    <a href="<?= base_url('Laporan/cetakpeminjamanelektronik?tglawal=') . $tanggalawal . '&tglakhir=' . $tanggalakhir; ?>" name="cetak" class="btn btn-danger btn-col-1" target="_blank" role="button" aria-disabled="true"><i class="fa fa-balance-scale fa-fw"></i>Cetak</a>
+                                <?php }
+                                if ($this->session->userdata('level') == 2) { ?>
+                                <?php }; ?>
                             </div>
                         </form>
                     </div>
@@ -72,12 +76,12 @@
                                         <td><?= $b['tgl_pinjam']; ?></td>
                                         <td><?= $b['keterangan']; ?></td>
                                         <td><?php
-                                            if (!empty($b['tgl_kembali'])) {
-                                                echo " <a class='btn btn-sm btn-success'><i class='fa fa-check-circle'></i> Dikembalikan</a>";
-                                            } else {
-                                                echo " <a class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Dipinjam</a>";
-                                            }
-                                            ?></td>
+                                        if (!empty($b['tgl_kembali'])) {
+                                            echo " <a class='btn btn-sm btn-success'><i class='fa fa-check-circle'></i> Dikembalikan</a>";
+                                        } else {
+                                            echo " <a class='btn btn-sm btn-danger'><i class='fa fa-close'></i> Dipinjam</a>";
+                                        }
+                                        ?></td>
                                         <!-- <td><a target="_blank" href="<?= base_url('Laporan/cetaktransaksielektronik/') . $b['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-book"></i></a></td> -->
                                     </tr>
                                     <?php $i++; ?>
