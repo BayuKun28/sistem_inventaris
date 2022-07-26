@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 16, 2022 at 05:08 PM
+-- Generation Time: Jul 26, 2022 at 03:40 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -58,26 +58,39 @@ CREATE TABLE IF NOT EXISTS `detail_transaksi_elektronik` (
   `barang` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_transaksi_elektronik`
 --
 
 INSERT INTO `detail_transaksi_elektronik` (`id`, `peminjaman_id`, `barang`, `qty`) VALUES
-(1, 36, 4, 1),
-(2, 36, 3, 1),
-(3, 36, 2, 1),
-(4, 37, 4, 4),
-(5, 41, 4, 1),
-(6, 41, 3, 1),
-(7, 41, 2, 1),
-(8, 42, 4, 1),
-(9, 42, 3, 1),
-(10, 42, 2, 1),
-(11, 43, 3, 1),
-(12, 1, 4, 1),
-(13, 1, 3, 1);
+(22, 9, 3, 1),
+(21, 9, 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_transaksi_kendaraan`
+--
+
+DROP TABLE IF EXISTS `detail_transaksi_kendaraan`;
+CREATE TABLE IF NOT EXISTS `detail_transaksi_kendaraan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `peminjaman_id` int(11) NOT NULL,
+  `barang` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_transaksi_kendaraan`
+--
+
+INSERT INTO `detail_transaksi_kendaraan` (`id`, `peminjaman_id`, `barang`) VALUES
+(4, 8, 2),
+(3, 8, 1),
+(5, 10, 8),
+(6, 10, 6);
 
 -- --------------------------------------------------------
 
@@ -201,12 +214,12 @@ CREATE TABLE IF NOT EXISTS `kendaraan` (
 --
 
 INSERT INTO `kendaraan` (`id`, `jenis_ranmor`, `merk`, `tipe_ranmor`, `unit_pengguna`, `no_pol`, `no_rangka`, `no_mesin`, `tahun_perolehan`, `asal_perolehan`, `kondisi_ranmor`, `jenis_bbm`, `file`, `status`) VALUES
-(1, 1, 'HONDA', 'MOTOR', 1, 'AD 0000 BB', '123123HHJ1239217UHH', '31293HGJHJH123', 2022, 'POLDA JATENGG', 1, 2, '_21_minimalist-iron-man-wallpaper_Iron-Man-4k-Ultra-HD-Wallpaper-Background-Image-1.jpg', 1),
-(2, 1, 'SUZUKI', 'MOBIL', 1, 'AD 0000 CC', '130912809JBJH', '3812039JBDJSJ', 2021, 'POLDA DIY', 1, 2, '01__pt_gin_Surat_kesanggupan_tutor_Bayu_Prastyo_10-01-2022.pdf', 1),
+(1, 1, 'HONDA', 'MOTOR', 1, 'AD 0000 BB', '123123HHJ1239217UHH', '31293HGJHJH123', 2022, 'POLDA JATENGG', 1, 2, '_21_minimalist-iron-man-wallpaper_Iron-Man-4k-Ultra-HD-Wallpaper-Background-Image-1.jpg', 0),
+(2, 1, 'SUZUKI', 'MOBIL', 1, 'AD 0000 CC', '130912809JBJH', '3812039JBDJSJ', 2021, 'POLDA DIY', 1, 2, '01__pt_gin_Surat_kesanggupan_tutor_Bayu_Prastyo_10-01-2022.pdf', 0),
 (3, 1, 'Kawasaki', 'MOTOR', 1, 'AB 0000 BB', '123123HHJ1239217ULL', '31293HGJHJ131', 2022, 'POLDA JATENG', 1, 1, '01__pt_gin_Surat_kesanggupan_tutor_Bayu_Prastyo_10-01-2022.pdf', 0),
 (5, 1, 'COBA MERK', 'COBA TIPE', 1, 'B 0001 XY', '123123HHJ1239217UHHDAJBJS123', '3812039JBDJSJASAHAS', 2022, 'POLDA JATENG', 1, 2, '_21_minimalist-iron-man-wallpaper_Iron-Man-4k-Ultra-HD-Wallpaper-Background-Image-.jpg', 0),
-(6, 3, 'HONDA', 'JAZZ', 1, 'AB 0001 XZ', '138129038SIHFSI23', '21312312ASDAIH', 2021, 'POLDA JATENG', 1, 4, 'output-onlinejpgtools.jpg', 0),
-(8, 3, 'SUZUKI', 'GSX 150 RR', 1, 'AB 9898 OP', '3456789EDTY9876RDTY', '3245678OIUYT34567IHJG', 2022, 'POLDA JOGJA', 1, 2, 'SeekPng_com_user-png_7297561.png', 0),
+(6, 3, 'HONDA', 'JAZZ', 1, 'AB 0001 XZ', '138129038SIHFSI23', '21312312ASDAIH', 2021, 'POLDA JATENG', 1, 4, 'output-onlinejpgtools.jpg', 1),
+(8, 3, 'SUZUKI', 'GSX 150 RR', 1, 'AB 9898 OP', '3456789EDTY9876RDTY', '3245678OIUYT34567IHJG', 2022, 'POLDA JOGJA', 1, 2, 'SeekPng_com_user-png_7297561.png', 1),
 (10, 1, 'asd', 'asd', 1, 'asd', 'asd', 'asd', 2022, 'sad', 1, 1, 'Remini20220712065327838.jpg', 0);
 
 -- --------------------------------------------------------
@@ -270,15 +283,16 @@ CREATE TABLE IF NOT EXISTS `peminjaman` (
   `keterangan` varchar(255) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `peminjaman`
 --
 
 INSERT INTO `peminjaman` (`id`, `nama`, `jenis_pinjam`, `nama_unit`, `nama_barang`, `tgl_pinjam`, `tgl_kembali`, `keterangan`, `id_user`) VALUES
-(1, 'TES 1', 2, 'TES 1', 'In Detail', '2022-07-16', NULL, '123', 1),
-(2, 'tes', 1, 'tes', '1,2', '2022-07-16', NULL, '123', 1);
+(10, 'TES MULTIPLE DETAIL LAGI', 1, '123', '8,6', '2022-07-26', NULL, '123', 1),
+(9, 'TES MULTIPLE DETAIL ELEKTRONIK', 2, 'TES UNIT', 'In Detail', '2022-07-26', '2022-07-26', 'abc', 1),
+(8, 'TES MULTIPLE DETAIL', 1, 'TES UNIT', '1,2', '2022-07-26', '2022-07-26', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -309,6 +323,16 @@ INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `level`, `is_activ
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `split_string_into_rows`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `split_string_into_rows`;
+CREATE TABLE IF NOT EXISTS `split_string_into_rows` (
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `unit_pengguna`
 --
 
@@ -326,6 +350,16 @@ CREATE TABLE IF NOT EXISTS `unit_pengguna` (
 INSERT INTO `unit_pengguna` (`id`, `unit_pengguna`) VALUES
 (1, 'UNIT LAKA'),
 (2, 'UNIT LAKA TUNGGAL');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `split_string_into_rows`
+--
+DROP TABLE IF EXISTS `split_string_into_rows`;
+
+DROP VIEW IF EXISTS `split_string_into_rows`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `split_string_into_rows`  AS  select straight_join (`n1`.`n` | (`n256`.`n` << 8)) AS `i`,`SET_EXTRACT`((`n1`.`n` | (`n256`.`n` << 8)),`split_string_into_rows`(NULL)) AS `e` from (`number_set` `n1` join `number_set` `n256`) where (1 & ((`n1`.`n` | (`n256`.`n` << 8)) < `SET_COUNT`(`split_string_into_rows`(NULL)))) ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -50,7 +50,7 @@
                             </div>
                             <div class="box-footer text-right">
                                 <a href="<?= base_url('Peminjamanelektronik'); ?>" class="btn btn-danger">Kembali</a>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-success">Proses</button>
                             </div>
                         </div>
                     </form>
